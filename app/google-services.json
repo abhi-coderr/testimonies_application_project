@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:334997415572:android:225d1cea165a0010183681",
         "android_client_info": {
-          "package_name": "com.example.adminapp"
+          "package_name": "com.yogeshwar.adminapp"
         }
       },
       "oauth_client": [
@@ -39,7 +39,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:334997415572:android:0e1e7a43986978c4183681",
         "android_client_info": {
-          "package_name": "com.example.streamingplatform"
+          "package_name": "com.yogeshwar.streamingplatform"
         }
       },
       "oauth_client": [
@@ -68,7 +68,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:334997415572:android:c2c1a8bf248a7494183681",
         "android_client_info": {
-          "package_name": "com.example.testimoniesapp"
+          "package_name": "com.yogeshwar.testimoniesapp"
         }
       },
       "oauth_client": [
@@ -97,7 +97,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:334997415572:android:3774a42e158a524c183681",
         "android_client_info": {
-          "package_name": "com.example.testimonyapplication"
+          "package_name": "com.yogeshwar.testimonyapplication"
         }
       },
       "oauth_client": [

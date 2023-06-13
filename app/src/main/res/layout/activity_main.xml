@@ -5,20 +5,33 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.yogeshwar.testimoniesapp.presentation.ui.screens.viewmodels.TestimonyViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.ui.screens.MainActivity">
+        tools:context=".presentation.ui.screens.activities.MainActivity">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/testimonyVideoRV"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:adapter="@{viewModel.adapter}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <VideoView
+            android:id="@+id/theVideView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_159sdp"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

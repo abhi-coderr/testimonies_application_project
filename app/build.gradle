@@ -2,14 +2,17 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'com.google.gms.google-services'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
-    namespace 'com.example.testimoniesapp'
+    namespace 'com.yogeshwar.testimoniesapp'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.testimoniesapp"
+        applicationId "com.yogeshwar.testimoniesapp"
         minSdk 24
         targetSdk 33
         versionCode 1
@@ -18,7 +21,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    buildFeatures{
+    buildFeatures {
         dataBinding true
     }
 
@@ -35,6 +38,13 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    sourceSets {
+        main {
+            assets {
+                srcDirs 'src\\main\\assets'
+            }
+        }
+    }
 }
 
 dependencies {
@@ -47,4 +57,28 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    /*********************************************************************
+     *                  for @parcelize
+     **********************************************************************/
+    implementation 'androidx.core:core-ktx:1.6.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.0'
+//    implementation 'org.jetbrains.kotlinx:kotlinx-parcelize:1.7.0'
+
+    /************************************************************************
+     *                       SDP & SSP
+     *************************************************************************/
+    implementation 'com.intuit.sdp:sdp-android:1.1.0'
+    implementation 'com.intuit.ssp:ssp-android:1.1.0'
+
+    /*************************************************************
+     *  Hilt - Dagger
+     *************************************************************/
+    implementation "com.google.dagger:hilt-android:2.44"
+
+    kapt "com.google.dagger:hilt-compiler:2.44"
+
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.1"
+
 }

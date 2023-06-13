@@ -1,4 +1,4 @@
-package com.example.testimoniesapp
+package com.yogeshwar.testimoniesapp
 
 import org.junit.Test
 
