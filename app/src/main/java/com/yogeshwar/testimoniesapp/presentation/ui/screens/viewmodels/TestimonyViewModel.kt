@@ -1,6 +1,8 @@
 package com.yogeshwar.testimoniesapp.presentation.ui.screens.viewmodels
 
+import android.net.Uri
 import android.util.Log
+import android.widget.MediaController
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -18,41 +20,36 @@ class TestimonyViewModel @Inject constructor(
     private val getTestimonyUseCase: GetTestimonyUseCase
 ) : ViewModel() {
 
-    val adapter by TestimonyAdapter.getAdapter()
+//    val adapter by TestimonyAdapter.getAdapter(onVideoView = {})
 
-    fun getTestimonies() {
-        viewModelScope.launch {
-            val response = getTestimonyUseCase.execute("First Category") { videoUri, exception ->
-                if (exception != null) {
-                    // Handle the error
-                    println("An error occurred: ${exception.message}")
-                } else {
-                    // Process the video URLs
-                    var uniqueValue = 0
-                    if (!videoUri.isNullOrEmpty()) {
-                        for (url in videoUri) {
-                            uniqueValue++
-                            Log.i("abhiii->>>", url)
-                            println(url) // or do something else with the URLs
-                            videoUri.map { TestimonyUrlResponse(uniqueValue, url) }
-                        }
-                    } else {
-                        // No videos found for the specified category
-                        println("No videos found for the specified category.")
-                    }
-                }
-            }
-
-            Log.i("abhiii->>>", response.toString())
-
-            when (response) {
-                is Resource.Success -> adapter.submitList(response.data)
-
-                is Resource.Failure -> {
-
-                }
-            }
-        }
-    }
+//    fun getTestimonies() {
+//        viewModelScope.launch {
+//          getTestimonyUseCase.execute("First Category") { videoUri, exception ->
+//                if (exception != null) {
+//                    // Handle the error
+//                    println("An error occurred: ${exception.message}")
+//                } else {
+//                    // Process the video URLs
+//
+//                    if (!videoUri.isNullOrEmpty()) {
+//
+//                        var uniqueValue = 0
+//
+//                        for (url in videoUri) {
+//                            println(url) // or do something else with the URLs
+//                            adapter.submitList(
+//                                videoUri.map {
+//                                    TestimonyUrlResponse(uniqueValue++, it)
+//                                }
+//                            )
+//                        }
+//                    } else {
+//                        // No videos found for the specified category
+//                        println("No videos found for the specified category.")
+//                    }
+//                }
+//            }
+//        }
+//    }
 
 }

@@ -7,12 +7,15 @@ import android.os.Bundle
 import android.widget.MediaController
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.yogeshwar.testimoniesapp.R
 import com.yogeshwar.testimoniesapp.core.utils.VideoFetcher
+import com.yogeshwar.testimoniesapp.data.models.response.TestimonyUrlResponse
 import com.yogeshwar.testimoniesapp.databinding.ActivityMainBinding
 import com.yogeshwar.testimoniesapp.presentation.ui.screens.components.adapters.TestimonyAdapter
 import com.yogeshwar.testimoniesapp.presentation.ui.screens.viewmodels.TestimonyViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -29,16 +32,47 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         viewModel = ViewModelProvider(this)[TestimonyViewModel::class.java]
-        setUpBinding()
+        setUpRecyclerView()
+//        setUpBinding()
         setUpViewModel()
     }
 
     private fun setUpViewModel() {
-        viewModel.getTestimonies()
+//        viewModel.getTestimonies()
+    }
+
+    fun setUpRecyclerView() = binding.apply {
+
+        testimonyVideoRV.adapter = adapter
+
+        videoFetcher.fetchVideosByCategory("UP to The 30") { videoUri, exception ->
+            if (exception != null) {
+                // Handle the error
+                println("An error occurred: ${exception.message}")
+            } else {
+                // Process the video URLs
+
+                if (!videoUri.isNullOrEmpty()) {
+
+                    var uniqueValue = 0
+
+                    for (url in videoUri) {
+                        println(url) // or do something else with the URLs
+                        adapter.submitList(
+                            videoUri.map {
+                                TestimonyUrlResponse(uniqueValue++, it)
+                            }
+                        )
+                    }
+                } else {
+                    // No videos found for the specified category
+                    println("No videos found for the specified category.")
+                }
+            }
+        }
     }
 
     private fun setUpBinding() = binding.apply {
-//        testimonyVideoRV.adapter = adapter
 
         var urlStirng = String()
 

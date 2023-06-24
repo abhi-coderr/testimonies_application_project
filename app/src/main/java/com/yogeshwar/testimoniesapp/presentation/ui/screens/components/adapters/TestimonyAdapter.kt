@@ -2,6 +2,7 @@ package com.yogeshwar.testimoniesapp.presentation.ui.screens.components.adapters
 
 import android.content.Context
 import android.net.Uri
+import android.view.View
 import android.widget.MediaController
 import com.yogeshwar.testimoniesapp.R
 import com.yogeshwar.testimoniesapp.core.custom_views.CustomAdapter
@@ -23,7 +24,7 @@ object TestimonyAdapter {
                     testimonyVideoView.setMediaController(mediaController)
                     testimonyVideoView.setVideoURI(videoUri)
                     testimonyVideoView.requestFocus()
-                    testimonyVideoView.start()
+                    testimonyVideoView.pause()
 
                 }
             },
